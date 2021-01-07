@@ -1,0 +1,27 @@
+## Importing data sets 
+data1 <- read.csv("C:/Users/PRAJNA PRAMANIK/OneDrive/Desktop/task 1 grip.csv")
+data1
+
+## Checking is there any missing values or na values
+is.null(data1)
+is.na(data1)
+sum(is.null(data1))
+sum(is.na(data1))
+
+# Plotting graph
+library(ggplot2)
+ggplot(data1,aes(Hours,Scores))+geom_point()
+
+# Fitting simple linear regression line:
+m1<- lm(data=data1,Scores~Hours) 
+summary(m1)
+
+#Calculated Predicted Value Manually
+# Equation from above result: Scores = 2.4837+ 9.7758*Hours
+# if, Hours = 9.25
+Scores = 2.4837+ 9.7758*9.25
+Scores
+
+# Calculation of predictive value using predict function
+predict_value = predict(m1,list(Hours=9.25))
+print(predict_value)
